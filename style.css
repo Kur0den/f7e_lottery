@@ -33,6 +33,7 @@ input[type="text"] {
     font-family: "Ubuntu mono", "M PLUS 1p", monospace;
     text-align: left;
     padding: 5px;
+    border-radius: 10px;
 }
 
 input[type="number"] {
@@ -40,11 +41,10 @@ input[type="number"] {
     font-family: "Ubuntu mono", "M PLUS 1p", monospace;
     text-align: left;
     padding: 5px;
+    border-radius: 10px;
 }
 
-/* input[type="checkbox"] {
-    margin-left: 5px;
-} */
+
 
 .mobile-br {
     display: none;
@@ -240,7 +240,7 @@ input[type="number"] {
 
 #result {
     flex-direction: row;
-    justify-content: center;
+    justify-content: row;
     align-items: center;
     padding: 20px;
 }
@@ -259,6 +259,30 @@ input[type="number"] {
     margin: 20px;
 }
 
+#result-content li {
+    margin: 10px;
+}
+
+/* コピーボタン */
+
+#copy-button {
+    justify-content: flex-start;
+    width: 30vw;
+    min-width: 180px;
+    margin: 20px 0;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background-color: #55bcc3;
+    font-family: "DotGothic16", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: normal;
+    color: #ffffff;
+}
+
+#copy-button:active {
+    background-color: #428c91;
+}
 
 /* 実行系 */
 
@@ -276,7 +300,7 @@ input[type="number"] {
     width: 30vw;
     min-width: 180px;
     margin: 20px 0;
-    padding: 20px 40px 20px 40px;
+    padding: 20px 40px;
     border-radius: 10px;
     background-color: #4c9e4c;
     font-family: "DotGothic16", sans-serif;
