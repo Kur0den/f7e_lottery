@@ -33,11 +33,30 @@ input[type="text"] {
     font-family: "Ubuntu mono", "M PLUS 1p", monospace;
     text-align: left;
     padding: 5px;
-
 }
 
-input[type="checkbox"] {
+input[type="number"] {
+    font-family: "Ubuntu mono", "M PLUS 1p", monospace;
+    text-align: right;
+    padding: 5px;
+}
+
+/* input[type="checkbox"] {
     margin-left: 5px;
+} */
+
+.mobile-br {
+    display: none;
+}
+
+
+/* for mobile */
+@media screen and (max-width: 570px) {
+
+    .mobile-br {
+        display: block;
+    }
+
 }
 
 
@@ -104,11 +123,16 @@ input[type="checkbox"] {
 }
 
 .section label {
-    display: block;
     justify-content: flex-start;
     margin-right: 10px;
     align-items: center;
 }
+
+.section input {
+    justify-content: flex-end;
+    align-items: center;
+}
+
 
 .section div {
     display: flex;
@@ -140,17 +164,50 @@ input[type="checkbox"] {
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
-    background-color: #f4f4f4;
     padding: 20px;
 }
 
-#settings .category-title {
+/* #settings .category-title {
     order: -1 -1;
-}
+} */
 
 #settings .input-prefix {
     margin-right: 0px;
 }
+
+
+.input-span {
+    flex-direction: row;
+    align-items: center;
+}
+
+#instance,
+#account,
+#followee,
+#note-url-div,
+#reply,
+#reaction,
+#renote,
+#winners-div {
+    align-items: center;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 700px) {
+
+    #instance,
+    #account,
+    #followee,
+    #note-url-div,
+    #reply,
+    #reaction,
+    #renote,
+    #winners-div {
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
 
 
 /* 抽選設定 */
@@ -165,17 +222,37 @@ input[type="checkbox"] {
     justify-content: center;
 }
 
-#reply {
+#reply,
+#reaction,
+#renote,
+#winners-div {
     justify-content: flex-start;
 }
 
-#reaction {
-    justify-content: flex-start;
+
+/* 結果 */
+
+#result {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-#renote {
-    justify-content: flex-start;
+#result-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
 }
+
+#result-content div {
+    margin: 20px;
+}
+
 
 /* 実行系 */
 
@@ -186,11 +263,13 @@ input[type="checkbox"] {
 }
 
 
+
 /* 実行ボタン */
 
 #run-button {
     width: 30vw;
-    margin: 20px;
+    min-width: 180px;
+    margin: 20px 0;
     padding: 20px 40px 20px 40px;
     border-radius: 10px;
     background-color: #4c9e4c;
@@ -206,6 +285,11 @@ input[type="checkbox"] {
 }
 
 /* ログ表示 */
+
+#run label {
+    align-items: center;
+    flex-direction: column;
+}
 
 #log {
     justify-content: center;
@@ -233,6 +317,7 @@ input[type="checkbox"] {
 #footer {
     justify-content: flex-start;
     margin-top: 20px;
+    margin-bottom: 20px;
     font-family: "Ubuntu mono", sans-serif;
     font-size: 1.2rem;
     font-weight: 400;

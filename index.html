@@ -18,7 +18,7 @@
                 <h1>f7y lottery</h1>
             </div>
             <div id="settings" class="section-dev">
-                <h2 id="category-title">設定</h2>
+                <h2 class="category-title">設定</h2>
                 <div id="settings-content">
                     <div id="user-settings" class="section">
                         <h3 class="section-title">
@@ -29,21 +29,25 @@
 
                         <div id="instance">
                             <label for="instance-input">インスタンス:</label>
-                            <span class="input-prefix">https://</span>
-                            <input
-                                type="text"
-                                id="instance-input"
-                                placeholder="chpk.kur0den.net"
-                            />
+                            <div class="input-span">
+                                <span class="input-prefix">https://</span>
+                                <input
+                                    type="text"
+                                    id="instance-input"
+                                    placeholder="chpk.kur0den.net"
+                                />
+                            </div>
                         </div>
                         <div id="account">
                             <label for="account-input">アカウント:</label>
-                            <span class="input-prefix">@</span>
-                            <input
-                                type="text"
-                                id="account-input"
-                                placeholder="kur0den0010"
-                            />
+                            <div class="input-span">
+                                <span class="input-prefix">@</span>
+                                <input
+                                    type="text"
+                                    id="account-input"
+                                    placeholder="kur0den0010"
+                                />
+                            </div>
                         </div>
                     </div>
                     <div id="lottery-settings" class="section">
@@ -58,7 +62,9 @@
                             </h3>
                             <div id="followee">
                                 <label for="is-follow">
-                                    フォローを条件に含める:
+                                    フォローを<br
+                                        class="mobile-br"
+                                    />条件に含める:
                                 </label>
                                 <input
                                     type="checkbox"
@@ -81,7 +87,9 @@
                             </div>
                             <div id="reply">
                                 <label for="is-reply">
-                                    リプライを条件に含める:
+                                    リプライを<br
+                                        class="mobile-br"
+                                    />条件に含める:
                                 </label>
                                 <input
                                     type="checkbox"
@@ -91,7 +99,9 @@
                             </div>
                             <div id="reaction">
                                 <label for="is-reaction">
-                                    リアクションを条件に含める:
+                                    リアクションを<br
+                                        class="mobile-br"
+                                    />条件に含める:
                                 </label>
                                 <input
                                     type="checkbox"
@@ -101,7 +111,9 @@
                             </div>
                             <div id="renote">
                                 <label for="is-renote">
-                                    リノートを条件に含める:
+                                    リノートを<br
+                                        class="mobile-br"
+                                    />条件に含める:
                                 </label>
                                 <input
                                     type="checkbox"
@@ -110,6 +122,32 @@
                                 />
                             </div>
                         </div>
+                        <div id="winners-div">
+                            <label for="winners">当選人数:</label>
+                            <input
+                                type="number"
+                                min="1"
+                                value="1"
+                                name="winners"
+                                id="winners"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="result" class="section-dev">
+                <h2 class="category-title">結果</h2>
+                <div id="result-content">
+                    <div id="winner-list">
+                        <h3 id="winner-list-title">当選者</h3>
+                        <ul id="winner-list-content">
+                            <li>当選者はここに表示されます</li>
+                        </ul>
+                    </div>
+                    <div id="copy-button-div">
+                        <button type="button" id="copy-button">
+                            結果をコピー
+                        </button>
                     </div>
                 </div>
             </div>
@@ -122,6 +160,13 @@
             </div>
             <div id="footer">
                 <p>© 2021 Kur0den0010</p>
+                <p>
+                    ActivityPub:
+                    <a href="https://chpk.kur0den.net/@kur0den0010"
+                        >@kur0den0010@chpk.kur0den.net</a
+                    >
+                </p>
+                <p>GitHub: <a href="https://github.com/kur0den">@kur0den</a></p>
             </div>
         </div>
     </body>
