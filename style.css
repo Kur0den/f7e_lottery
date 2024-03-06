@@ -77,8 +77,9 @@ input[type="number"] {
 
 
 .section-dev {
-    width: 70vw;
-    margin: 30px;
+    max-width: 1000px;
+    width: 80vw;
+    margin: 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -269,6 +270,7 @@ input[type="number"] {
     justify-content: flex-start;
     width: 30vw;
     min-width: 180px;
+    max-width: 200px;
     margin: 20px 0;
     padding: 10px 10px;
     border-radius: 10px;
@@ -299,6 +301,7 @@ input[type="number"] {
 #run-button {
     width: 30vw;
     min-width: 180px;
+    max-width: 400px;
     margin: 20px 0;
     padding: 20px 40px;
     border-radius: 10px;
@@ -325,6 +328,7 @@ input[type="number"] {
     justify-content: center;
     border: 2px solid #333;
     width: 50vw;
+    max-width: 800px;
     height: 200px;
     /* 高さを200pxに制限 */
     overflow: scroll;
