@@ -36,8 +36,9 @@ input[type="text"] {
 }
 
 input[type="number"] {
+    width: 50px;
     font-family: "Ubuntu mono", "M PLUS 1p", monospace;
-    text-align: right;
+    text-align: left;
     padding: 5px;
 }
 
@@ -205,7 +206,12 @@ input[type="number"] {
     #winners-div {
         align-items: center;
         flex-direction: column;
+
+        label {
+            margin-right: 0;
+        }
     }
+
 }
 
 
