@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>f5y lottery</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
+        />
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="main.js"></script>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="title">
+            <h1>f5y lottery</h1>
+        </div>
+        <div id="main">
+            <div id="settings">
+                <h2>設定</h2>
+                <div id="user-settings" class="section">
+                    <h3 class="section-title">アカウント設定</h3>
+                    <div id="instance">
+                        <label for="instance-input">インスタンス:</label>
+                        <span class="input-prefix">https://</span>
+                        <input
+                            type="text"
+                            id="instance-input"
+                            placeholder="インスタンス名"
+                        />
+                    </div>
+                    <div id="account">
+                        <label for="account-input">アカウント:</label>
+                        <span class="input-prefix">@</span>
+                        <input type="text" id="account-input"
+                        placeholder="アカウントID"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
