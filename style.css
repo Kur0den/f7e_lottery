@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400&family=M+PLUS+1p&family=M+PLUS+Rounded+1c&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Kiwi+Maru:wght@300;400&family=M+PLUS+1p&family=M+PLUS+Rounded+1c&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 * {
     font-family: "M PLUS Rounded 1c", sans-serif;
@@ -29,29 +29,50 @@ h3 {
     margin-bottom: 10px;
 }
 
-input {
+input[type="text"] {
     font-family: "Ubuntu mono", "M PLUS 1p", monospace;
     text-align: left;
+    padding: 5px;
 
 }
 
+input[type="checkbox"] {
+    margin-left: 5px;
+}
 
 
 /* title */
 
 #page-title {
-    margin: 20px 0;
+    margin: 20px 0 200px;
     font-size: 2.5rem;
     font-family: "Ubuntu Mono", monospace;
-    font-style: bold;
+    font-style: normal;
     font-weight: 500;
     color: #333;
 }
+
+
+
+
+
+.section-dev {
+    width: 70vw;
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 20px;
+}
+
 
 /* main */
 
 #main {
     display: flex;
+    flex-direction: column;
     height: 100vh;
     justify-content: center;
     align-items: center;
@@ -69,6 +90,7 @@ input {
     align-items: stretch;
 }
 
+
 .section>* {
     margin: 10px 0;
 }
@@ -82,13 +104,14 @@ input {
     justify-content: flex-start;
 }
 
-.section>label {
+.section label {
+    display: block;
     justify-content: flex-start;
-    flex-grow: 1;
     margin-right: 10px;
+    align-items: center;
 }
 
-.section>div {
+.section div {
     display: flex;
     justify-content: flex-end;
 }
@@ -103,10 +126,19 @@ input {
     background-color: #f4f4f4;
 }
 
+.section input[type="text"] {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
 /* settings */
 
-#settings {
+#settings-content {
+    width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
     background-color: #f4f4f4;
@@ -119,4 +151,79 @@ input {
 
 #settings .input-prefix {
     margin-right: 0px;
+}
+
+
+/* 抽選設定 */
+
+#followee {
+    justify-content: flex-start;
+}
+
+/* --- */
+
+#note-url-div {
+    justify-content: center;
+}
+
+#reply {
+    justify-content: flex-start;
+}
+
+#reaction {
+    justify-content: flex-start;
+}
+
+#renote {
+    justify-content: flex-start;
+}
+
+/* 実行系 */
+
+#run {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* 実行ボタン */
+
+#run-button {
+    width: 200px;
+    margin: 20px;
+    padding: 20px 40px 20px 40px;
+    border-radius: 10px;
+    background-color: #4c9e4c;
+    font-family: "DotGothic16", sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+    font-style: normal;
+    color: #ffffff;
+}
+
+#run-button:active {
+    background-color: #317031;
+}
+
+/* ログ表示 */
+
+#log {
+    justify-content: center;
+    border: 2px solid #333;
+    width: 50vw;
+    height: 200px;
+    /* 高さを200pxに制限 */
+    overflow: scroll;
+    /* 内容がdiv要素を超えた場合にスクロールバーを表示 */
+}
+
+#log>p {
+    text-align: left;
+    margin: 5px;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 1rem;
+    font-weight: 400;
+    font-style: normal;
+    color: #333;
 }

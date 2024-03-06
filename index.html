@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>f5y lottery</title>
+        <title>f7y lottery</title>
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
@@ -14,33 +14,110 @@
     </head>
     <body>
         <div id="page-title">
-            <h1>f5y lottery</h1>
+            <h1>f7y lottery</h1>
         </div>
         <div id="main">
-            <div id="settings">
+            <div id="settings" class="section-dev">
                 <h2 id="category-title">設定</h2>
-                <div id="user-settings" class="section">
-                    <h3 class="section-title">
-                        <span class="section-title-text">アカウント設定</span>
-                    </h3>
-                    <div id="instance">
-                        <label for="instance-input">インスタンス:</label>
-                        <span class="input-prefix">https://</span>
-                        <input
-                            type="text"
-                            id="instance-input"
-                            placeholder="chpk.kur0den.net"
-                        />
+                <div id="settings-content">
+                    <div id="user-settings" class="section">
+                        <h3 class="section-title">
+                            <span class="section-title-text"
+                                >アカウント設定</span
+                            >
+                        </h3>
+
+                        <div id="instance">
+                            <label for="instance-input">インスタンス:</label>
+                            <span class="input-prefix">https://</span>
+                            <input
+                                type="text"
+                                id="instance-input"
+                                placeholder="chpk.kur0den.net"
+                            />
+                        </div>
+                        <div id="account">
+                            <label for="account-input">アカウント:</label>
+                            <span class="input-prefix">@</span>
+                            <input
+                                type="text"
+                                id="account-input"
+                                placeholder="kur0den0010"
+                            />
+                        </div>
                     </div>
-                    <div id="account">
-                        <label for="account-input">アカウント:</label>
-                        <span class="input-prefix">@</span>
-                        <input
-                            type="text"
-                            id="account-input"
-                            placeholder="kur0den0010"
-                        />
+                    <div id="lottery-settings" class="section">
+                        <h3 class="section-title">
+                            <span class="section-title-text">抽選設定</span>
+                        </h3>
+                        <div id="conditions-account" class="section">
+                            <h3 class="section-title">
+                                <span class="section-title-text"
+                                    >アカウント関連</span
+                                >
+                            </h3>
+                            <div id="followee">
+                                <label for="is-follow">
+                                    フォローを条件に含める:
+                                </label>
+                                <input
+                                    type="checkbox"
+                                    name="isFollow"
+                                    id="is-follow"
+                                />
+                            </div>
+                        </div>
+                        <div id="conditions-note" class="section">
+                            <h3 class="section-title">
+                                <span class="section-title-text">投稿関連</span>
+                            </h3>
+                            <div id="note-url-div">
+                                <label for="note-url">対象ノートのURL:</label>
+                                <input
+                                    type="text"
+                                    id="note-url"
+                                    placeholder="https://chpk.kur0den.net/notes/9qg0rzcxn2qc07us"
+                                />
+                            </div>
+                            <div id="reply">
+                                <label for="is-reply">
+                                    リプライを条件に含める:
+                                </label>
+                                <input
+                                    type="checkbox"
+                                    name="isReply"
+                                    id="is-reply"
+                                />
+                            </div>
+                            <div id="reaction">
+                                <label for="is-reaction">
+                                    リアクションを条件に含める:
+                                </label>
+                                <input
+                                    type="checkbox"
+                                    name="isRecation"
+                                    id="is-reaction"
+                                />
+                            </div>
+                            <div id="renote">
+                                <label for="is-renote">
+                                    リノートを条件に含める:
+                                </label>
+                                <input
+                                    type="checkbox"
+                                    name="isRenote"
+                                    id="is-renote"
+                                />
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+            <div id="run" class="section-dev">
+                <button type="button" id="run-button">実行</button>
+                <label for="log">それっぽいログ:</label>
+                <div id="log">
+                    <p>Logs are displayed here</p>
                 </div>
             </div>
         </div>
