@@ -125,7 +125,7 @@ input[type="number"] {
 }
 
 .section label {
-    justify-content: flex-start;
+    justify-self: flex-start;
     margin-right: 10px;
     align-items: center;
 }
@@ -138,7 +138,7 @@ input[type="number"] {
 
 .section div {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .section>div>span {
@@ -294,6 +294,15 @@ input[type="number"] {
     align-items: center;
 }
 
+/* エラー表示 */
+
+#error-title {
+    font-family: "Kiwi Maru", serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: normal;
+    color: #ff0000;
+}
 
 
 /* 実行ボタン */
