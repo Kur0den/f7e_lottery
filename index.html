@@ -2,14 +2,14 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>f7y lottery</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="main.js"></script>
-    <link rel="stylesheet" href="style.css" />
-    </head>
+    <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
     <div id="main">
@@ -27,102 +27,102 @@
                         <label for="instance-input">インスタンス:</label>
                         <div class="input-span">
                             <span class="input-prefix">https://</span>
-                            <input type="text" id="instance-input" placeholder="chpk.kur0den.net" />
-                        </div>
-                            <div id="account">
-                                <label for="account-input">アカウント:</label>
-                                <div class="input-span">
-                                    <span class="input-prefix">@</span>
-                            <input type="text" id="account-input" placeholder="kur0den0010" />
-                            </div>
+                            <input type="text" id="instance-input" placeholder="chpk.kur0den.net">
                         </div>
                     </div>
-                        <div id="lottery-settings" class="section">
-                                <h3 class="section-title">
-                                    <span class="section-title-text">抽選設定</span>
-                                </h3>
-                                <div id="conditions-account" class="section">
-                                    <h3 class="section-title">
+                    <div id="account">
+                        <label for="account-input">アカウント:</label>
+                        <div class="input-span">
+                            <span class="input-prefix">@</span>
+                            <input type="text" id="account-input" placeholder="kur0den0010">
+                        </div>
+                    </div>
+                </div>
+                <div id="lottery-settings" class="section">
+                    <h3 class="section-title">
+                        <span class="section-title-text">抽選設定</span>
+                    </h3>
+                    <div id="conditions-account" class="section">
+                        <h3 class="section-title">
                             <span class="section-title-text">アカウント関連</span>
-                            </h3>
-                            <div id="followee">
-                                <label for="is-follow">
-                                フォローを<br class="mobile-br" />条件に含める:
-                                </label>
-                                <input type="checkbox" name="isFollow" id="is-follow" />
-                            </div>
+                        </h3>
+                        <div id="followee">
+                            <label for="is-follow">
+                                フォローを<br class="mobile-br">条件に含める:
+                            </label>
+                            <input type="checkbox" name="isFollow" id="is-follow">
                         </div>
-                        <div id="conditions-note" class="section">
-                                <h3 class="section-title">
-                                    <span class="section-title-text">投稿関連</span>
-                                </h3>
-                                <div id="note-url-div">
-                                    <label for="note-url">対象ノートのURL:</label>
-                            <input type="text" id="note-url" placeholder="https://chpk.kur0den.net/notes/9qg0rzcxn2qc07us" />
-                            </div>
-                            <div id="reply">
-                                <label for="is-reply">
-                                リプライを<br class="mobile-br" />条件に含める:
-                                </label>
-                            <input type="checkbox" name="isReply" id="is-reply" />
-                            </div>
-                            <div id="reaction">
-                                <label for="is-reaction">
-                                リアクションを<br class="mobile-br" />条件に含める:
-                                </label>
-                            <input type="checkbox" name="isRecation" id="is-reaction" />
-                            </div>
-                            <div id="renote">
-                                <label for="is-renote">
-                                リノートを<br class="mobile-br" />条件に含める:
-                                </label>
-                            <input type="checkbox" name="isRenote" id="is-renote" />
-                            </div>
-                            </div>
-                            <div id="winners-div">
-                                <label for="winners">当選人数:</label>
-                        <input type="number" min="1" value="1" name="winners" id="winners" />
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div id="conditions-note" class="section">
+                        <h3 class="section-title">
+                            <span class="section-title-text">投稿関連</span>
+                        </h3>
+                        <div id="note-url-div">
+                            <label for="note-url">対象ノートのURL:</label>
+                            <input type="text" id="note-url" placeholder="https://chpk.kur0den.net/notes/9qg0rzcxn2qc07us">
                         </div>
-                        <div id="result" class="section-dev">
-                            <h2 class="category-title">結果</h2>
-                            <div id="result-content">
-                                <div id="winner-list">
-                                    <h3 id="winner-list-title">当選者</h3>
-                                    <ul id="winner-list-content">
-                                        <li>当選者はここに表示されます</li>
-                                        <li>当選者はここに表示されます</li>
-                                    </ul>
-                                </div>
-                                <div id="copy-button-div">
-                                    <button type="button" id="copy-button">
-                                        結果をコピー
-                                    </button>
-                                </div>
-                            </div>
+                        <div id="reply">
+                            <label for="is-reply">
+                                リプライを<br class="mobile-br">条件に含める:
+                            </label>
+                            <input type="checkbox" name="isReply" id="is-reply">
                         </div>
-                        <div id="run" class="section-dev">
-                            <h4 id="error-title"></h4>
-                            <button type="button" id="run-button">実行</button>
-                            <label for="log">それっぽいログ:</label>
-                            <div id="log">
-                                <p>Logs are displayed here</p>
-                            </div>
+                        <div id="reaction">
+                            <label for="is-reaction">
+                                リアクションを<br class="mobile-br">条件に含める:
+                            </label>
+                            <input type="checkbox" name="isRecation" id="is-reaction">
                         </div>
-                        <div id="footer">
-                            <p>© 2024 Kur0den0010</p>
-                            <p>
-                                ActivityPub:
-                                <a href="https://chpk.kur0den.net/@kur0den0010">@kur0den0010@chpk.kur0den.net</a>
-                            </p>
-                            <p>GitHub: <a href="https://github.com/kur0den">@kur0den</a></p>
-                            <p></p>
+                        <div id="renote">
+                            <label for="is-renote">
+                                リノートを<br class="mobile-br">条件に含める:
+                            </label>
+                            <input type="checkbox" name="isRenote" id="is-renote">
                         </div>
+                    </div>
+                    <div id="winners-div">
+                        <label for="winners">当選人数:</label>
+                        <input type="number" min="1" value="1" name="winners" id="winners">
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+        <div id="result" class="section-dev">
+            <h2 class="category-title">結果</h2>
+            <div id="result-content">
+                <div id="winner-list">
+                    <h3 id="winner-list-title">当選者</h3>
+                    <ul id="winner-list-content">
+                        <li>当選者はここに表示されます</li>
+                        <li>当選者はここに表示されます</li>
+                    </ul>
+                </div>
+                <div id="copy-button-div">
+                    <button type="button" id="copy-button">
+                        結果をコピー
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="run" class="section-dev">
+            <h4 id="error-title"></h4>
+            <button type="button" id="run-button">実行</button>
+            <label for="log">それっぽいログ:</label>
+            <div id="log">
+                <p>Logs are displayed here</p>
+            </div>
+        </div>
+        <div id="footer">
+            <p>© 2024 Kur0den0010</p>
+            <p>
+                ActivityPub:
+                <a href="https://chpk.kur0den.net/@kur0den0010">@kur0den0010@chpk.kur0den.net</a>
+            </p>
+            <p>GitHub: <a href="https://github.com/kur0den">@kur0den</a></p>
+            <p></p>
+        </div>
+    </div>
+
+</body>
+
 </html>
