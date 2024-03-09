@@ -1,5 +1,5 @@
 $(function () {
-    $('#run-button').on('click', function () {
+    $('#run-button').on('click', async function () {
         console.log('The button was clicked');
 
         // アカウント設定
@@ -12,17 +12,33 @@ $(function () {
         const isReaction = $('#is-reaction').prop('checked');
         const isRenote = $('#is-renote').prop('checked');
 
-        instanceCheck(instanceDomain)
-            .then(function (data) {
-                console.log(data);
-                const webFingerData = data.replace('{uri}', 'acct:' + accountName + '@' + instanceDomain);
-                console.log(webFingerData);
-                accountCheck(webFingerData, accountName);
-            })
-            .catch(function () {
-                console.log('instanceCheck error.');
-                $('#error-title').text('インスタンスが正しいか確認してください');
-            });
+        if (instanceDomain === '' && accountName === '') {
+            $('#error-title').text('インスタンスとアカウントを入力してください');
+            return;
+        } else if (instanceDomain === '') {
+            $('#error-title').text('インスタンスを入力してください');
+            return;
+        } else if (accountName === '') {
+            $('#error-title').text('アカウントを入力してください');
+            return;
+        }
+        try {
+            data = await instanceCheck(instanceDomain);
+        } catch (error) {
+            console.log('instanceCheck error.');
+            $('#error-title').text('インスタンスが正しいか確認してください');
+            return;
+        }
+        console.log(data);
+        const webFingerUrl = data.replace('{uri}', 'acct:' + accountName + '@' + instanceDomain);
+        console.log(webFingerUrl);
+        try {
+            accountCheck(webFingerUrl);
+        } catch (error) {
+            console.log('accountCheck error.');
+            $('#error-title').text('アカウントが正しいか確認してください');
+            return;
+        }
     });
 
     $('#copy-button').on('click', function () {
@@ -56,9 +72,28 @@ function instanceCheck(instanceDomain) {
 }
 
 // 入力されたインスタンス、アカウントが正しいかどうか確認
-function accountCheck(instanceDomain, accountName) {}
+function accountCheck(webFingerUrl) {
+    console.log('accountCheck');
+
+    $.ajax({
+        url: webFingerUrl,
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            logOutput('Account is found.');
+            console.log(data);
+            logOutput('Account name: ' + data['preferredUsername']);
+        },
+        error: function (data) {
+            logOutput('Account is not found.');
+            console.log(data);
+        },
+    });
+}
 
 // それっぽいログへの出力
 function logOutput(content) {
     $('#log').append(`<p>${content}</p>`);
+    // スクロールを一番下にする
+    $('#log').scrollTop($('#log')[0].scrollHeight);
 }
