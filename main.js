@@ -2,8 +2,15 @@ $(function () {
     $('#run-button').on('click', function () {
         console.log('The button was clicked');
 
+        // アカウント設定
         const instanceDomain = $('#instance-input').val();
         const accountName = $('#account-input').val();
+
+        // 抽選設定
+        const isFollow = $('#is-follow').prop('checked');
+        const isReply = $('#is-reply').prop('checked');
+        const isReaction = $('#is-reaction').prop('checked');
+        const isRenote = $('#is-renote').prop('checked');
 
         instanceCheck(instanceDomain).then(function (data) {
             console.log(data);
@@ -18,6 +25,7 @@ $(function () {
     });
 });
 
+// インスタンスが正しいかどうか.wellknown.jsonがあるかどうかで確認
 function instanceCheck(instanceDomain) {
     console.log('instanceCheck');
 
@@ -28,13 +36,13 @@ function instanceCheck(instanceDomain) {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            console.log('success');
+            logOutput('success');
             console.log(data);
             dfd.resolve(data['links'][0]['template']);
         },
         error: function (data) {
-            console.log('error');
-            console.log(data);
+            logOutput('error');
+            logOutput(data);
             dfd.reject();
         },
     });
@@ -44,3 +52,8 @@ function instanceCheck(instanceDomain) {
 
 // 入力されたインスタンス、アカウントが正しいかどうか確認
 function accountCheck(instanceDomain, accountName) {}
+
+// それっぽいログへの出力
+function logOutput(content) {
+    $('#log').append(`<p>${content}</p>`);
+}
