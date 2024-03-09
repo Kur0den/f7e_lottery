@@ -12,6 +12,7 @@ $(function () {
         const isReaction = $('#is-reaction').prop('checked');
         const isRenote = $('#is-renote').prop('checked');
 
+        // 入力チェック
         if (instanceDomain === '' && accountName === '') {
             $('#error-title').text('インスタンスとアカウントを入力してください');
             return;
@@ -22,6 +23,9 @@ $(function () {
             $('#error-title').text('アカウントを入力してください');
             return;
         }
+
+        // インスタンスとアカウントが正しいかどうか確認
+        // インスタンス
         try {
             data = await instanceCheck(instanceDomain);
         } catch (error) {
@@ -30,10 +34,11 @@ $(function () {
             return;
         }
         console.log(data);
+        // webfingerの問い合わせ用URLを生成
         const webFingerUrl = data.replace('{uri}', 'acct:' + accountName + '@' + instanceDomain);
-        console.log(webFingerUrl);
+        logOutput('webFingerUrl: ' + webFingerUrl);
         try {
-            accountCheck(webFingerUrl);
+            await accountCheck(webFingerUrl);
         } catch (error) {
             console.log('accountCheck error.');
             $('#error-title').text('アカウントが正しいか確認してください');
@@ -58,7 +63,7 @@ function instanceCheck(instanceDomain) {
         dataType: 'json',
         success: function (data) {
             logOutput('/.wellknown/host-meta.json is found.');
-            logOutput('webfinger template: ' + data['links'][0]['template']);
+            logOutput('webFingerTemplate: ' + data['links'][0]['template']);
             dfd.resolve(data['links'][0]['template']);
         },
         error: function (data) {
@@ -71,9 +76,11 @@ function instanceCheck(instanceDomain) {
     return dfd.promise();
 }
 
-// 入力されたインスタンス、アカウントが正しいかどうか確認
+// 入力されたアカウントが正しいかどうか確認
 function accountCheck(webFingerUrl) {
     console.log('accountCheck');
+
+    var dfd = $.Deferred();
 
     $.ajax({
         url: webFingerUrl,
@@ -82,13 +89,17 @@ function accountCheck(webFingerUrl) {
         success: function (data) {
             logOutput('Account is found.');
             console.log(data);
-            logOutput('Account name: ' + data['preferredUsername']);
+            logOutput('AccountUrl: ' + data['links'][1]['href']);
+            dfd.resolve();
         },
         error: function (data) {
             logOutput('Account is not found.');
             console.log(data);
+            dfd.reject();
         },
     });
+
+    return dfd.promise();
 }
 
 // それっぽいログへの出力
