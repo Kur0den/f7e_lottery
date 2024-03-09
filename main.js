@@ -41,12 +41,12 @@ function instanceCheck(instanceDomain) {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            logOutput('/.wellknown.json is found.');
+            logOutput('/.wellknown/host-meta.json is found.');
             logOutput('webfinger template: ' + data['links'][0]['template']);
             dfd.resolve(data['links'][0]['template']);
         },
         error: function (data) {
-            logOutput('/.wellknown.json is not found.');
+            logOutput('/.wellknown/host-meta.json is not found.');
             console.log(data);
             dfd.reject();
         },
