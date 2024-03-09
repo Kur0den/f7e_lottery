@@ -12,12 +12,14 @@ $(function () {
         const isReaction = $('#is-reaction').prop('checked');
         const isRenote = $('#is-renote').prop('checked');
 
-        instanceCheck(instanceDomain).then(function (data) {
-            console.log(data);
-            const webFingerData = data.replace('{uri}', 'acct:' + accountName + '@' + instanceDomain);
-            console.log(webFingerData);
-            accountCheck(webFingerData, accountName);
-        });
+        instanceCheck(instanceDomain)
+            .then(function (data) {
+                console.log(data);
+                const webFingerData = data.replace('{uri}', 'acct:' + accountName + '@' + instanceDomain);
+                console.log(webFingerData);
+                accountCheck(webFingerData, accountName);
+            })
+            .catch(function () {});
     });
 
     $('#copy-button').on('click', function () {
@@ -36,13 +38,13 @@ function instanceCheck(instanceDomain) {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            logOutput('success');
-            console.log(data);
+            logOutput('/.wellknown.json is found.');
+            logOutput('webfinger template: ' + data['links'][0]['template']);
             dfd.resolve(data['links'][0]['template']);
         },
         error: function (data) {
-            logOutput('error');
-            logOutput(data);
+            logOutput('/.wellknown.json is not found.');
+            console.log(data);
             dfd.reject();
         },
     });
