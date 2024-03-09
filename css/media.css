@@ -29,3 +29,18 @@
     }
 
 }
+
+
+.mobile-br {
+    display: none;
+}
+
+
+/* for mobile */
+@media screen and (max-width: 570px) {
+
+    .mobile-br {
+        display: block;
+    }
+
+}

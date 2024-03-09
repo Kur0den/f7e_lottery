@@ -42,22 +42,6 @@ input[type="number"] {
 }
 
 
-
-.mobile-br {
-    display: none;
-}
-
-
-/* for mobile */
-@media screen and (max-width: 570px) {
-
-    .mobile-br {
-        display: block;
-    }
-
-}
-
-
 /* title */
 
 #page-title h1 {
@@ -68,9 +52,6 @@ input[type="number"] {
     font-weight: 500;
     color: #333;
 }
-
-
-
 
 
 .section-dev {
