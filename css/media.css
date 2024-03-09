@@ -1,0 +1,31 @@
+#instance,
+#account,
+#followee,
+#note-url-div,
+#reply,
+#reaction,
+#renote,
+#winners-div {
+    align-items: center;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 700px) {
+
+    #instance,
+    #account,
+    #followee,
+    #note-url-div,
+    #reply,
+    #reaction,
+    #renote,
+    #winners-div {
+        align-items: center;
+        flex-direction: column;
+
+        label {
+            margin-right: 0;
+        }
+    }
+
+}
