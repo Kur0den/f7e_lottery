@@ -19,7 +19,10 @@ $(function () {
                 console.log(webFingerData);
                 accountCheck(webFingerData, accountName);
             })
-            .catch(function () {});
+            .catch(function () {
+                console.log('instanceCheck error.');
+                $('#error-title').text('インスタンスが正しいか確認してください');
+            });
     });
 
     $('#copy-button').on('click', function () {
