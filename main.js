@@ -24,6 +24,12 @@ $(function () {
             return;
         }
 
+        // 抽選条件チェック
+        if (!isFollow && !isReply && !isReaction && !isRenote) {
+            $('#error-title').text('抽選条件を選択してください');
+            return;
+        }
+
         // インスタンスとアカウントが正しいかどうか確認
         // インスタンス
         try {
