@@ -1,5 +1,5 @@
 import { logOutput, errorOutput } from './outputUtil.js';
-import { instanceCheck, accountCheck } from './valueCheck.js';
+import { instanceCheck, accountCheck, noteCheck } from './valueCheck.js';
 
 $(function () {
     $('#run-button').on('click', async function () {
@@ -50,15 +50,21 @@ $(function () {
             errorOutput('アカウントが正しいか確認してください');
             return;
         }
-    });
 
-    // 抽選条件チェック
-    if (!isFollow && !isReply && !isReaction && !isRenote) {
-        errorOutput('抽選条件を選択してください');
-        return;
-    }
+        // 抽選条件チェック
+        if (!isFollow && !isReply && !isReaction && !isRenote) {
+            errorOutput('抽選条件を選択してください');
+            return;
+        }
 
-    $('#copy-button').on('click', function () {
-        console.log('The button was clicked');
+        // ノートに関する抽選条件が指定されていた場合にURLが入力されているかどうか確認
+        if (!noteCheck(noteUrl) && (isReaction || isRenote || isReply)) {
+            errorOutput('正しいノートのURLを入力してください');
+            return;
+        }
+
+        $('#copy-button').on('click', function () {
+            console.log('The button was clicked');
+        });
     });
 });
