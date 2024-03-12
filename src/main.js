@@ -1,3 +1,5 @@
+import { logOutput, errorOutput } from './outputUtil.js';
+
 $(function () {
     $('#run-button').on('click', async function () {
         console.log('The button was clicked');
@@ -118,16 +120,4 @@ function noteCheck() {
     if (noteUrl === '') {
         return false;
     }
-}
-
-// エラーメッセージを出力
-function errorOutput(content) {
-    $('#error-title').text(content);
-}
-
-// それっぽいログへの出力
-function logOutput(content) {
-    $('#log').append(`<p>${content}</p>`);
-    // スクロールを一番下にする
-    $('#log').scrollTop($('#log')[0].scrollHeight);
 }
