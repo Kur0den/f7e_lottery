@@ -15,19 +15,19 @@ $(function () {
 
         // 入力チェック
         if (instanceDomain === '' && accountName === '') {
-            $('#error-title').text('インスタンスとアカウントを入力してください');
+            errorOutput('インスタンスとアカウントを入力してください');
             return;
         } else if (instanceDomain === '') {
-            $('#error-title').text('インスタンスを入力してください');
+            errorOutput('インスタンスを入力してください');
             return;
         } else if (accountName === '') {
-            $('#error-title').text('アカウントを入力してください');
+            errorOutput('アカウントを入力してください');
             return;
         }
 
         // 抽選条件チェック
         if (!isFollow && !isReply && !isReaction && !isRenote) {
-            $('#error-title').text('抽選条件を選択してください');
+            errorOutput('抽選条件を選択してください');
             return;
         }
 
@@ -37,7 +37,7 @@ $(function () {
             data = await instanceCheck(instanceDomain);
         } catch (error) {
             console.log('instanceCheck error.');
-            $('#error-title').text('インスタンスが正しいか確認してください');
+            errorOutput('インスタンスが正しいか確認してください');
             return;
         }
         console.log(data);
@@ -50,7 +50,7 @@ $(function () {
             const executeUser = { accountName, instanceDomain };
         } catch (error) {
             console.log('accountCheck error.');
-            $('#error-title').text('アカウントが正しいか確認してください');
+            errorOutput('アカウントが正しいか確認してください');
             return;
         }
     });
@@ -118,6 +118,11 @@ function noteCheck() {
     if (noteUrl === '') {
         return false;
     }
+}
+
+// エラーメッセージを出力
+function errorOutput(content) {
+    $('#error-title').text(content);
 }
 
 // それっぽいログへの出力
