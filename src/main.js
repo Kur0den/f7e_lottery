@@ -30,24 +30,32 @@ $(function () {
 
         // インスタンスとアカウントが正しいかどうか確認
         // インスタンス
+
+        let urlData;
         try {
-            data = await instanceCheck(instanceDomain);
+            urlData = await instanceCheck(instanceDomain);
         } catch (error) {
             console.log('instanceCheck error.');
+            logOutput('instanceCheck failed.');
             errorOutput('インスタンスが正しいか確認してください');
+            console.log(error);
             return;
         }
-        console.log(data);
+        console.log(urlData);
         // webfingerの問い合わせ用URLを生成
-        const webFingerUrl = data.replace('{uri}', 'acct:' + accountName + '@' + instanceDomain);
+        const webFingerUrl = urlData.replace('{uri}', 'acct:' + accountName + '@' + instanceDomain);
         logOutput('webFingerUrl: ' + webFingerUrl);
+
+        let executeUser;
         try {
             await accountCheck(webFingerUrl);
             // 実行ユーザーを変数に格納
-            const executeUser = { accountName, instanceDomain };
+            executeUser = { accountName, instanceDomain };
         } catch (error) {
             console.log('accountCheck error.');
+            logOutput('accountCheck failed.');
             errorOutput('アカウントが正しいか確認してください');
+            console.log(error);
             return;
         }
 
@@ -58,9 +66,19 @@ $(function () {
         }
 
         // ノートに関する抽選条件が指定されていた場合にURLが入力されているかどうか確認
-        if (!noteCheck(noteUrl) && (isReaction || isRenote || isReply)) {
-            errorOutput('正しいノートのURLを入力してください');
-            return;
+        if (isReaction || isRenote || isReply) {
+            try {
+                await noteCheck(noteUrl);
+            } catch (error) {
+                console.log('noteCheck error.');
+                logOutput('noteCheck failed.');
+                errorOutput('正しいノートのURLを入力してください');
+                console.log(error);
+                return;
+            }
+            logOutput('noteCheck success.');
+        } else {
+            logOutput('noteCheck is not required.');
         }
 
         $('#copy-button').on('click', function () {
