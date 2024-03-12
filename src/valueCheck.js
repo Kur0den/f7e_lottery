@@ -1,3 +1,5 @@
+import { logOutput } from './outputUtil.js';
+
 // インスタンスが正しいかどうか.wellknown.jsonがあるかどうかで確認
 export function instanceCheck(instanceDomain) {
     console.log('instanceCheck');
@@ -50,10 +52,18 @@ export function accountCheck(webFingerUrl) {
 }
 
 // ノートに関する抽選条件が指定されていた場合にURLが入力されているかどうか確認
-export function noteCheck() {
-    console.log('noteCheck');
+export function noteCheck(noteUrl) {
+    logOutput('noteUrlCheck');
+
+    var dfd = $.Deferred();
+
     // URLが入力されているかどうか確認
     if (noteUrl === '') {
-        return false;
+        dfd.reject();
     }
+    const noteId = noteUrl.slice(noteUrl.lastIndexOf('/') + 1);
+    logOutput('noteId: ' + noteId);
+    dfd.resolve(noteId);
+
+    return dfd.promise();
 }
