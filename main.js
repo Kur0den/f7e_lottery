@@ -8,6 +8,7 @@ $(function () {
 
         // 抽選設定
         const isFollow = $('#is-follow').prop('checked');
+        const noteUrl = $('#note-url').val();
         const isReply = $('#is-reply').prop('checked');
         const isReaction = $('#is-reaction').prop('checked');
         const isRenote = $('#is-renote').prop('checked');
@@ -108,6 +109,15 @@ function accountCheck(webFingerUrl) {
     });
 
     return dfd.promise();
+}
+
+// ノートに関する抽選条件が指定されていた場合にURLが入力されているかどうか確認
+function noteCheck() {
+    console.log('noteCheck');
+    // URLが入力されているかどうか確認
+    if (noteUrl === '') {
+        return false;
+    }
 }
 
 // それっぽいログへの出力
