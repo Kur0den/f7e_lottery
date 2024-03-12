@@ -1,4 +1,5 @@
 import { logOutput } from './outputUtil.js';
+import { noteGet } from './misskeyApi.js';
 
 // インスタンスが正しいかどうか.wellknown.jsonがあるかどうかで確認
 export function instanceCheck(instanceDomain) {
@@ -52,18 +53,26 @@ export function accountCheck(webFingerUrl) {
 }
 
 // ノートに関する抽選条件が指定されていた場合にURLが入力されているかどうか確認
-export function noteCheck(noteUrl) {
+export async function noteCheck(noteUrl, instanceDomain) {
     logOutput('noteUrlCheck');
 
     var dfd = $.Deferred();
 
     // URLが入力されているかどうか確認
     if (noteUrl === '') {
-        dfd.reject();
+        dfd.reject('noInput');
     }
     const noteId = noteUrl.slice(noteUrl.lastIndexOf('/') + 1);
     logOutput('noteId: ' + noteId);
-    dfd.resolve(noteId);
+
+    // ノートが正しいかどうか確認
+    let noteData;
+    try {
+        noteData = await noteGet(noteId, instanceDomain);
+    } catch (error) {
+        dfd.reject('noNote');
+    }
+    dfd.resolve(noteData);
 
     return dfd.promise();
 }

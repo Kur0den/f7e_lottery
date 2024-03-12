@@ -68,11 +68,17 @@ $(function () {
         // ノートに関する抽選条件が指定されていた場合にURLが入力されているかどうか確認
         if (isReaction || isRenote || isReply) {
             try {
-                await noteCheck(noteUrl);
+                await noteCheck(noteUrl, instanceDomain);
             } catch (error) {
                 console.log('noteCheck error.');
                 logOutput('noteCheck failed.');
-                errorOutput('正しいノートのURLを入力してください');
+                if (error == 'noInput') {
+                    errorOutput('ノートのURLを入力してください');
+                } else if (error == 'noNote') {
+                    errorOutput('正しいノートのURLを入力してください');
+                } else {
+                    errorOutput('正しいか確認してください');
+                }
                 console.log(error);
                 return;
             }
