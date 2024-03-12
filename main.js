@@ -45,6 +45,8 @@ $(function () {
         logOutput('webFingerUrl: ' + webFingerUrl);
         try {
             await accountCheck(webFingerUrl);
+            // 実行ユーザーを変数に格納
+            const executeUser = { accountName, instanceDomain };
         } catch (error) {
             console.log('accountCheck error.');
             $('#error-title').text('アカウントが正しいか確認してください');
