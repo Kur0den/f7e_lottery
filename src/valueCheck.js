@@ -3,7 +3,7 @@ import { noteGet } from './misskeyApi.js';
 
 // インスタンスが正しいかどうか.wellknown.jsonがあるかどうかで確認
 export function instanceCheck(instanceDomain) {
-    console.log('instanceCheck');
+    logOutput('instanceCheck');
 
     var dfd = $.Deferred();
 
@@ -28,7 +28,7 @@ export function instanceCheck(instanceDomain) {
 
 // 入力されたアカウントが正しいかどうか確認
 export function accountCheck(webFingerUrl) {
-    console.log('accountCheck');
+    logOutput('accountCheck');
 
     var dfd = $.Deferred();
 
@@ -37,13 +37,13 @@ export function accountCheck(webFingerUrl) {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            logOutput('Account is found.');
+            logOutput('Account found.');
             console.log(data);
             logOutput('AccountUrl: ' + data['links'][1]['href']);
             dfd.resolve();
         },
         error: function (data) {
-            logOutput('Account is not found.');
+            logOutput('Account not found.');
             console.log(data);
             dfd.reject();
         },

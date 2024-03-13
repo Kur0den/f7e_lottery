@@ -29,8 +29,8 @@ $(function () {
         }
 
         // インスタンスとアカウントが正しいかどうか確認
-        // インスタンス
 
+        // インスタンス
         let urlData;
         try {
             urlData = await instanceCheck(instanceDomain);
@@ -41,11 +41,13 @@ $(function () {
             console.log(error);
             return;
         }
+        logOutput('instanceCheck success.');
         console.log(urlData);
         // webfingerの問い合わせ用URLを生成
         const webFingerUrl = urlData.replace('{uri}', 'acct:' + accountName + '@' + instanceDomain);
         logOutput('webFingerUrl: ' + webFingerUrl);
 
+        // アカウント
         let executeUser;
         try {
             await accountCheck(webFingerUrl);
@@ -58,12 +60,19 @@ $(function () {
             console.log(error);
             return;
         }
+        logOutput('accountCheck success.');
 
         // 抽選条件チェック
         if (!isFollow && !isReply && !isReaction && !isRenote) {
+            logOutput('No lottery conditions selected.');
             errorOutput('抽選条件を選択してください');
             return;
         }
+        logOutput('Lottery conditions selected.');
+        logOutput('isFollow: ' + isFollow);
+        logOutput('isReply: ' + isReply);
+        logOutput('isReaction: ' + isReaction);
+        logOutput('isRenote: ' + isRenote);
 
         // ノートに関する抽選条件が指定されていた場合にURLが入力されているかどうか確認
         if (isReaction || isRenote || isReply) {
